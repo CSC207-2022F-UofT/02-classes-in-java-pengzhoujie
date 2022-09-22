@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * This file contains a few exercises to familiarize you with specific
@@ -118,7 +119,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {3, 1};
+        int[] expected_values = {2, 0};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -160,11 +161,11 @@ public class Silly implements Comparable<Silly>{
             return false;
         }
 
-        if (this.name != ((Silly) o).name){
+        Silly other = (Silly) o; // To access .name of o, we need to cast it.
+
+        if (!Objects.equals(this.name, other.name)){
             return false;
         }
-
-        Silly other = (Silly) o; // To access .name of o, we need to cast it.
         return true;
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
